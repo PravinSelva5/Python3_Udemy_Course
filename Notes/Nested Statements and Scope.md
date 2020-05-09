@@ -1,4 +1,4 @@
-# Following Instructor
+# Notes while following the instructor
 
 
 ```python
