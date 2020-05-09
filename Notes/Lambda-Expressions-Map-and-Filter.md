@@ -1,7 +1,6 @@
 # Lambda Expressions, Map, and Filter
 
-##
- Following Instructor
+# Following Instructor
 
 
 ```python
