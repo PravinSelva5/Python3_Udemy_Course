@@ -71,9 +71,10 @@ def greet():
 
 greet()
 
-# Beause the variable name isn't defined within the hello function. Python will check for enclosing function locals. As you can see,
-#  name is defined within the greet function, therefore, it'll use that variable when hello is executed.
-# If you commented out name = 'Sammy', the output will be Hello THIS IS A GLOBAL STRING, because python will look for a global variable in the python module
+# Beause the variable name isn't defined within the hello function. Python will check for enclosing function locals.
+# As you can see, name is defined within the greet function, therefore, it'll use that variable when hello is executed.
+# If you commented out name = 'Sammy', the output will be Hello THIS IS A GLOBAL STRING,
+#because python will look for a global variable in the python module
 ```
 
     Hello I'M A LOCAL
@@ -105,7 +106,8 @@ func(x)
 ```python
 print(x)
 
-# the reason why x isn't 200 is because, x = 200 change is only present in the local namespace of the function. Globally, the value of x is still 50
+# the reason why x isn't 200 is because, x = 200 change is only present in the local namespace of the function.
+# Globally, the value of x is still 50
 # If you did want to change the global value of x, you would define the x as a global variable within the function.
 ```
 
@@ -116,7 +118,8 @@ print(x)
 ```python
 # Defining a global variable within a function
 # you don't accept x as a parameter
-# In Python, parameters are added as local variables within the function's scope. One of the rules instructed by the Python IDE is for any given block of code, you can't have variables that are in both local and global namespace
+# In Python, parameters are added as local variables within the function's scope.
+# One of the rules instructed by the Python IDE is for any given block of code, you can't have variables that are in both local and global namespace
 # Since parameters are maintained as local variables, they can't be named as a global variable within the function.
 x = 50
 
@@ -157,7 +160,8 @@ print(x)
 
 ```python
 # Typically you want to avoid using the global keyword unless it is absolutely necessary
-# if you do want to chage a global variable, grab it as a parameter and once you change the value, return the re-assignment as an object itself
+# if you do want to chage a global variable, grab it as a parameter and once you change the value,
+# return the re-assignment as an object itself
 
 x = 50
 
