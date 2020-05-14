@@ -7,6 +7,14 @@ class Line:
         self.coor2 = coor2
 
     def distance(self):
+        '''
+        Could have used tuple unpacking:
+
+            x1,y1 = self.coor1
+            x2,y2 = self.coor2
+
+        '''
+
         distance =  ((self.coor2[0] - self.coor1[0])**2 + (self.coor2[1] - self.coor1[1])**2) ** 0.5
         return distance
 
