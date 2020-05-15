@@ -16,7 +16,7 @@ Instantiate your class, make several deposits and withdrawals, and test to make 
 '''
 class Account:
 
-    def __init__(self, owner, balance):
+    def __init__(self, owner, balance=0):
         self.owner = owner
         self.balance = balance
 
@@ -48,7 +48,7 @@ acct1.balance
 # 5. Make a series of deposits and withdrawals
 acct1.deposit(50)
 
-# 6 Make an acceptable withdrawal 
+# 6 Make an acceptable withdrawal
 acct1.withdraw(75)
 
 # 7. Make a withdrawal that exceeds the available balance
