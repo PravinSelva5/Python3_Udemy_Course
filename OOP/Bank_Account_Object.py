@@ -14,7 +14,7 @@ As an added requirement, withdrawals may not exceed the available balance.
 
 Instantiate your class, make several deposits and withdrawals, and test to make sure the account can't be overdrawn.
 '''
-class Account:
+class Account():
 
     def __init__(self, owner, balance=0):
         self.owner = owner
