@@ -6,9 +6,10 @@ def display_board(board):
 
 # Function takes in a player input and assigns their marker.
 def player_input(player1):
-    while (marker != 'X' and marker != 'O'):
-        marker = input("Player {name_of_player} pick a marker 'X' or 'O': ".format(name_of_player = player1))
-    return marker
+    marker = ['']
+    while (marker[0] != "X" and marker[0] != 'O'):
+        marker = input("Player {name_of_player} pick a marker X or O: ".format(name_of_player = player1))
+    return marker[0]
 
 # Function that takes in the board list object and assigns it to the desired next_position
 def place_marker(board, marker, position):
@@ -77,11 +78,9 @@ def reset_board():
     board = ['','','','','','','','','','']
     return display_board(board)
 
-
 ############################################################################################
-#       RUNNING THE GAME
+#                                 RUNNING THE GAME
 ############################################################################################
-
 
 if __name__ == '__main__':
     import random
@@ -93,7 +92,7 @@ if __name__ == '__main__':
     i = 0
 
     while True:
-        player_input(player1)
+        marker1 = player_input(player1)
         while (player1 == 1):
             player_choice(board)
 
