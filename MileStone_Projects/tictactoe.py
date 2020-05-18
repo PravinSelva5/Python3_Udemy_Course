@@ -5,11 +5,10 @@ def display_board(board):
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
 
 # Function takes in a player input and assigns their marker.
-def player_input():
-    player1 = 1
-    while (player1 != 'X' and player1 != 'O'):
-        player1 = input("Please pick a marker 'X' or 'O': ")
-    return player1
+def player_input(player1):
+    while (marker != 'X' and marker != 'O'):
+        marker = input("Player {name_of_player} pick a marker 'X' or 'O': ".format(name_of_player = player1))
+    return marker
 
 # Function that takes in the board list object and assigns it to the desired next_position
 def place_marker(board, marker, position):
@@ -37,10 +36,11 @@ def win_check(board, mark):
     else:
         pass
 
-#Function chooses which player will go first
+# Function chooses which player will go first
 def choose_first():
     player = random.randint(1, 2)
-    print("Player {player} goes first")
+    print("Player {player} goes first".format(player = player))
+    return player
 
 # Checks if the player's desired position is free
 def space_check(board, position):
@@ -72,10 +72,70 @@ def replay():
     else:
         return False
 
-def main():
+# Resets/Clears the board
+def reset_board():
+    board = ['','','','','','','','','','']
+    return display_board(board)
+
+
+############################################################################################
+#       RUNNING THE GAME
+############################################################################################
+
+
+if __name__ == '__main__':
     import random
+    import sys
+
     print("Welcome to Tic Tac Toe!")
-    choose_first()
+    reset_board()
+    player1 = choose_first()
+    i = 0
 
     while True:
-        
+        player_input(player1)
+        while (player1 == 1):
+            player_choice(board)
+
+            if space_check(board,position) == False:
+                print('Please pick another position')
+            elif full_board_check(board) == True:
+                print('Game Over Board Full')
+                break
+            else:
+                continue
+
+            display_board(board)
+            player1+=1
+            i+=1
+            break
+
+        while(player1 == 2):
+            player_choice(board)
+            display_board(board)
+
+            if space_check(board,position) == False:
+                print('Please pick another position')
+            elif full_board_check(board) == True:
+                print('Game Over Board Full')
+                break
+            else:
+                continue
+
+            player1-=1
+            i+=1
+            break
+
+# Checks if player 1 or player 2 has won
+        if i >= 3:
+            win_check()
+        else:
+            pass
+
+# The script will ask the players if they want to play again. If not, the program will terminate
+        play_again = replay()
+        if play_again == 'y':
+            break
+        else:
+            print("Thank you for playing!")
+            sys.exit()
