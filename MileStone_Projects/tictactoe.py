@@ -8,7 +8,7 @@ def display_board(board):
 def player_input(player1):
     marker = ['']
     while (marker[0] != "X" and marker[0] != 'O'):
-        marker = input("Player {name_of_player} pick a marker X or O: ".format(name_of_player = player1))
+        marker = raw_input("Player {name_of_player} pick a marker X or O: ".format(name_of_player = player1))
     return marker[0]
 
 # Function that takes in the board list object and assigns it to the desired next_position
@@ -45,11 +45,10 @@ def choose_first():
 
 # Checks if the player's desired position is free
 def space_check(board, position):
-    for i in board:
-        if board[i] == ' ':
-            return True
-        else:
-            return False
+    if board[position] == '':
+        return True
+    else:
+        return False
 
 # Checks if the board is full and returns a boolean value
 def full_board_check(board):
@@ -87,14 +86,16 @@ if __name__ == '__main__':
     import sys
 
     print("Welcome to Tic Tac Toe!")
-    reset_board()
+    board = reset_board()
     player1 = choose_first()
     i = 0
 
     while True:
         marker1 = player_input(player1)
         while (player1 == 1):
-            player_choice(board)
+            next_position = player_choice(board)
+            place_marker(board, marker1,next_position)
+            display_board(board)
 
             if space_check(board,position) == False:
                 print('Please pick another position')
@@ -110,7 +111,8 @@ if __name__ == '__main__':
             break
 
         while(player1 == 2):
-            player_choice(board)
+            next_position = player_choice(board)
+            place_marker(board, marker1,next_position)
             display_board(board)
 
             if space_check(board,position) == False:
