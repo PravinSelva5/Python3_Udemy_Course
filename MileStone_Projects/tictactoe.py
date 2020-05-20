@@ -19,21 +19,21 @@ def place_marker(board, marker, position):
 # Function checks to see if a player has won with their mark choice
 def win_check(board, mark):
     if (board[1] == 'X') and (board[2] == 'X') and (board[3] == 'X'):
-        print('You won')
+        return 1
     elif (board[4] == 'X') and (board[5] == 'X') and (board[6] == 'X'):
-        print('You won')
+        return 1
     elif (board[7] == 'X') and (board[8] == 'X') and (board[9] == 'X'):
-        print('You won')
+        return 1
     elif (board[1] == 'X') and (board[4] == 'X') and (board[7] == 'X'):
-        print('You won')
+        return 1
     elif (board[2] == 'X') and (board[5] == 'X') and (board[8] == 'X'):
-        print('You won')
+        return 1
     elif (board[3] == 'X') and (board[6] == 'X') and (board[9] == 'X'):
-        print('You won')
+        return 1
     elif (board[1] == 'X') and (board[5] == 'X') and (board[9] == 'X'):
-        print('You won')
+        return 1
     elif (board[3] == 'X') and (board[5] == 'X') and (board[7] == 'X'):
-        print('You won')
+        return 1
     else:
         pass
 
@@ -45,28 +45,37 @@ def choose_first():
 
 # Checks if the player's desired position is free
 def space_check(board, position):
-    if board[position] == '':
+    if board[position] != 'X' and board[position] != 'O':
         return True
     else:
         return False
 
 # Checks if the board is full and returns a boolean value
 def full_board_check(board):
-    for i in board:
-        if board[i] != ' ':
-            return False
+    spots = 0
+    for i in range(len(board)):
+        if board[i] == 'X' or board[i] == 'O':
+            spots += 1
         else:
-            return True
+            continue
+    if spots == 9:
+        return True
+    else:
+        return False
 
 # Asks for the player's next position and checks if it's a free position
 def player_choice(board):
     next_position = int(input("Where would you like to place your next: "))
-    space_check(board, next_position)
+    value = space_check(board, next_position)
+    if value == True:
+        pass
+    else:
+        print("Please choose another position")
     return next_position
 
 # Asks the player if he or she wants to play again
 def replay():
-    question = input("Do you want to play again? ")
+    question = raw_input("Do you want to play again? ")
     if question[0].lower() == 'y':
         return True
     else:
@@ -75,7 +84,7 @@ def replay():
 # Resets/Clears the board
 def reset_board():
     board = ['','','','','','','','','','']
-    return display_board(board)
+    return board
 
 ############################################################################################
 #                                 RUNNING THE GAME
@@ -92,46 +101,49 @@ if __name__ == '__main__':
 
     while True:
         marker1 = player_input(player1)
+
         while (player1 == 1):
             next_position = player_choice(board)
             place_marker(board, marker1,next_position)
             display_board(board)
 
-            if space_check(board,position) == False:
-                print('Please pick another position')
-            elif full_board_check(board) == True:
+            if full_board_check(board) == True:
                 print('Game Over Board Full')
                 break
             else:
                 continue
 
-            display_board(board)
-            player1+=1
+            player1 += 1
             i+=1
-            break
+
+            result = win_check(board, marker1)
+            if result == 1:
+                print("You won!")
+                break
+            else:
+                pass
+
 
         while(player1 == 2):
             next_position = player_choice(board)
             place_marker(board, marker1,next_position)
             display_board(board)
 
-            if space_check(board,position) == False:
-                print('Please pick another position')
-            elif full_board_check(board) == True:
+            if full_board_check(board) == True:
                 print('Game Over Board Full')
                 break
             else:
                 continue
 
-            player1-=1
+            player1 -= 1
             i+=1
-            break
 
-# Checks if player 1 or player 2 has won
-        if i >= 3:
-            win_check()
-        else:
-            pass
+            result = win_check(board, marker1)
+            if result == 1:
+                print("You won!")
+                break
+            else:
+                pass
 
 # The script will ask the players if they want to play again. If not, the program will terminate
         play_again = replay()
