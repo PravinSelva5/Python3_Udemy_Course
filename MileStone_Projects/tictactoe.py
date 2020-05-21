@@ -18,28 +18,28 @@ def place_marker(board, marker, position):
 
 # Function checks to see if a player has won with their mark choice
 def win_check(board, mark):
-    if (board[1] == 'X') and (board[2] == 'X') and (board[3] == 'X'):
+    if (board[0] == 'X') and (board[1] == 'X') and (board[2] == 'X'):
         return 1
-    elif (board[4] == 'X') and (board[5] == 'X') and (board[6] == 'X'):
+    elif (board[3] == 'X') and (board[4] == 'X') and (board[5] == 'X'):
         return 1
-    elif (board[7] == 'X') and (board[8] == 'X') and (board[9] == 'X'):
+    elif (board[6] == 'X') and (board[7] == 'X') and (board[8] == 'X'):
+        return 1
+    elif (board[0] == 'X') and (board[3] == 'X') and (board[6] == 'X'):
         return 1
     elif (board[1] == 'X') and (board[4] == 'X') and (board[7] == 'X'):
         return 1
-    elif (board[2] == 'X') and (board[5] == 'X') and (board[8] == 'X'):
+    elif (board[2] == 'X') and (board[7] == 'X') and (board[8] == 'X'):
         return 1
-    elif (board[3] == 'X') and (board[6] == 'X') and (board[9] == 'X'):
+    elif (board[0] == 'X') and (board[4] == 'X') and (board[8] == 'X'):
         return 1
-    elif (board[1] == 'X') and (board[5] == 'X') and (board[9] == 'X'):
-        return 1
-    elif (board[3] == 'X') and (board[5] == 'X') and (board[7] == 'X'):
+    elif (board[2] == 'X') and (board[4] == 'X') and (board[6] == 'X'):
         return 1
     else:
         pass
 
 # Function chooses which player will go first
 def choose_first():
-    player = random.randint(1, 2)
+    player = random.randint(1,2)
     print("Player {player} goes first".format(player = player))
     return player
 
@@ -123,8 +123,8 @@ if __name__ == '__main__':
             else:
                 pass
 
-
         while(player1 == 2):
+
             next_position = player_choice(board)
             place_marker(board, marker1,next_position)
             display_board(board)
@@ -144,7 +144,6 @@ if __name__ == '__main__':
                 break
             else:
                 pass
-
 # The script will ask the players if they want to play again. If not, the program will terminate
         play_again = replay()
         if play_again == 'y':
