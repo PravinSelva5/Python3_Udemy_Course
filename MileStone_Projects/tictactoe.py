@@ -66,12 +66,13 @@ def full_board_check(board):
 
 # Asks for the player's next position and checks if it's a free position
 def player_choice(board,marker):
-    next_position = int(input("Where would you like to place your next {marker}: ".format(marker = marker)))
+    next_position = int(input("Where would you like to place your next {marker} between 1 and 9: ".format(marker = marker)))
     value = space_check(board, next_position)
     if value == True:
         pass
     else:
         print("Spot is taken, please choose another position")
+        board[next_position] = ''
         player_choice(board,marker)
     return next_position
 
