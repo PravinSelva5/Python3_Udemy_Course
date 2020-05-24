@@ -45,7 +45,6 @@ def choose_first():
 
 # Checks if the player's desired position is free
 def space_check(board, position):
-    #WHAT IF THE INDEX PROVIDED IS OUT OF RANGE?
     if board[position] != 'X' and board[position] != 'O':
         return True
     else:
@@ -66,14 +65,24 @@ def full_board_check(board):
 
 # Asks for the player's next position and checks if it's a free position
 def player_choice(board,marker):
-    next_position = int(input("Where would you like to place your next {marker} between 1 and 9: ".format(marker = marker)))
-    value = space_check(board, next_position)
-    if value == True:
-        pass
-    else:
-        print("Spot is taken, please choose another position")
-        player_choice(board,marker)
-    return next_position
+    while True:
+        try:
+            next_position = int(input("Where would you like to place your next {marker} between 1 and 9: ".format(marker = marker)))
+            value = space_check(board, next_position)
+            if value == True:
+                pass
+            else:
+                continue
+            return next_position
+        except ValueError:
+            print("Please provide an integer between 1 and 9")
+            continue
+        except IndexError:
+            print("Please provide an index within 1 and 9")
+            continue
+        else:
+            #Correct value given, we're reading to leave the loop
+            break
 
 # Asks the player if he or she wants to play again
 def replay():
