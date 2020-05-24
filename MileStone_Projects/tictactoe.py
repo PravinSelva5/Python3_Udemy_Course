@@ -72,7 +72,6 @@ def player_choice(board,marker):
         pass
     else:
         print("Spot is taken, please choose another position")
-        board[next_position] = ''
         player_choice(board,marker)
     return next_position
 
