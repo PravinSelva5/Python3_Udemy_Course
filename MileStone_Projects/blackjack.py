@@ -61,3 +61,21 @@ class Deck:
     def deal(self):
         deal_card = self.deck.pop()
         return deal_card
+
+# Creating a Hand class
+class Hand:
+    def __init__(self):
+        self.cards = []  # start with an empty list as we did in the Deck class
+        self.value = 0   # start with zero value
+        self.aces = 0    # add an attribute to keep track of aces
+
+    def add_card(self,card):
+        self.cards.append(card)
+        self.value += values[card.rank]
+        if card.suit == 'Aces':
+            self.aces = 1
+
+    def adjust_for_ace(self):
+        if self.value > 21 and self.aces:
+            self.value -= 10
+            self.aces -= 1
