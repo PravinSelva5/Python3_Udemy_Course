@@ -79,3 +79,126 @@ class Hand:
         if self.value > 21 and self.aces:
             self.value -= 10
             self.aces -= 1
+'''
+Creates a Chip class
+In addition to decks of cards and hands, we need to keep track of a Player's starting chips, bets, and ongoing winnings.
+This could be done using global variables, but in the spirit of object oriented programming, let's make a Chips class instead!
+'''
+class Chips:
+
+    def __init__(self):
+        self.total = 100  # This can be set to a default value or supplied by a user input
+        self.bet = 0
+
+    def win_bet(self):
+        pass
+
+    def lose_bet(self):
+        pass
+
+'''
+Function for taking bets
+Since we're asking the user for an integer value, this would be a good place to use try,except.
+Remember to check that a Player's bet can be covered by their available chips.
+'''
+def take_bet():
+
+    pass
+
+'''
+Function for taking hits
+Either player can take hits until they bust. This function will be called during gameplay anytime a Player requests a hit, or a Dealer's hand is less than 17.
+It should take in Deck and Hand objects as arguments, and deal one card off the deck and add it to the Hand.
+You may want it to check for aces in the event that a player's hand exceeds 21.
+'''
+def hit(deck,hand):
+
+    pass
+
+'''
+Function prompting the Player to Hit or Stand
+This function should accept the deck and the player's hand as arguments, and assign playing as a global variable.
+If the Player Hits, employ the hit() function above. If the Player Stands, set the playing variable to False - this will control the behavior of a while
+loop later on in our code.
+'''
+def hit_or_stand(deck,hand):
+    global playing  # to control an upcoming while loop
+
+    pass
+
+'''
+Functions to display cards
+When the game starts, and after each time Player takes a card, the dealer's first card is hidden and all of Player's cards are visible.
+At the end of the hand all cards are shown, and you may want to show each hand's total value. Write a function for each of these scenarios.
+'''
+def show_some(player,dealer):
+
+    pass
+
+def show_all(player,dealer):
+
+    pass
+
+'''
+Functions to handle end of game scenarios. Remember to pass player's hand, dealer's hand and chips as needed.
+'''
+def player_busts():
+    pass
+
+def player_wins():
+    pass
+
+def dealer_busts():
+    pass
+
+def dealer_wins():
+    pass
+
+def push():
+    pass
+
+
+
+while True:
+    # Print an opening statement
+
+
+    # Create & shuffle the deck, deal two cards to each player
+
+
+
+    # Set up the Player's chips
+
+
+    # Prompt the Player for their bet
+
+
+    # Show cards (but keep one dealer card hidden)
+
+
+    while playing:  # recall this variable from our hit_or_stand function
+
+        # Prompt for Player to Hit or Stand
+
+
+        # Show cards (but keep one dealer card hidden)
+
+
+        # If player's hand exceeds 21, run player_busts() and break out of loop
+
+
+            break
+
+    # If Player hasn't busted, play Dealer's hand until Dealer reaches 17
+
+
+        # Show all cards
+
+        # Run different winning scenarios
+
+
+    # Inform Player of their chips total
+
+    # Ask to play again
+
+        break
