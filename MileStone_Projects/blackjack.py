@@ -34,11 +34,11 @@ playing = True
 # Card class
 class Card:
     def __init__(self,suits,ranks):
-        self.suit = suits
-        self.rank = ranks
+        self.suits = suits
+        self.ranks = ranks
 
     def __str__(self):
-        return ('{rank} of {suit}'.format(rank = self.rank, suit=self.suit))
+        return ('{rank} of {suit}'.format(rank = self.ranks, suit=self.suits))
 
 # Create a Deck of class
 class Deck:
@@ -47,7 +47,7 @@ class Deck:
         self.deck = []  # start with an empty list
         for suit in suits:
             for rank in ranks:
-                self.deck.append(Card(suit,rank))
+                self.deck.append(Card(suits,ranks))
 
     def __str__(self):
         complete_deck = ''
@@ -200,5 +200,4 @@ while True:
     # Inform Player of their chips total
 
     # Ask to play again
-
-        break
+    break
