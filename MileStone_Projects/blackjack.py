@@ -70,10 +70,11 @@ class Hand:
         self.aces = 0    # add an attribute to keep track of aces
 
     def add_card(self,card):
+        #card from Deck.deal() --> single card (suit, rank)
         self.cards.append(card)
         self.value += values[card.rank]
-        if card.suit == 'Aces':
-            self.aces = 1
+        if card.ranks == 'Ace':
+            self.aces += 1
 
     def adjust_for_ace(self):
         if self.value > 21 and self.aces:
@@ -86,15 +87,15 @@ This could be done using global variables, but in the spirit of object oriented 
 '''
 class Chips:
 
-    def __init__(self):
-        self.total = 100  # This can be set to a default value or supplied by a user input
+    def __init__(self, total = 100):
+        self.total = total  # This can be set to a default value or supplied by a user input
         self.bet = 0
 
     def win_bet(self):
-        pass
+        self.total += self.bet
 
     def lose_bet(self):
-        pass
+        self.total -= self.bet
 
 '''
 Function for taking bets
