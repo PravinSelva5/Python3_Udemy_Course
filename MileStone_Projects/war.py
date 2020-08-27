@@ -6,21 +6,11 @@ CARD CLASS
 - Needs to understand the rank of the card
 - There needs to be an integer rank associated with the rank, so that you can compare two cards
 """
-values = {
-    'Two': 2,
-    'Three': 3,
-    'Four': 4,
-    'Five': 5,
-    'Six': 6,
-    'Seven': 7,
-    'Eight': 8,
-    'Nine': 9,
-    'Ten': 10,
-    'Jack': 11,
-    'Queen': 12,
-    'King': 13,
-    'Ace': 14,
-}
+import random
+
+suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two': 2,'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10,'Jack': 11,'Queen': 12, 'King': 13, 'Ace': 14,}
 
 class Card():
 
@@ -32,6 +22,29 @@ class Card():
     def __str__(self):
         return self.rank + " of " + self.suit
 
+"""
+-----------
+DECK CLASS
+-----------
+- Instantiate a new deck
+    - Create all 52 card objects
+    - Hold as a list of card objects
+- Shuffle a deck through a method call
+    - Random library shuffle() function
+- Deal cards from the deck object
+    - Pop method from cards list
+"""
 
+class Deck():
 
-
+    def __init__(self):
+        self.all_cards = []
+        
+        for suit in suits:
+            for rank in ranks:
+                # Card Object will be created here
+                created_card = Card(suit, rank)
+                self.all_cards.append(created_card)
+        
+    def shuffle_deck(self):
+        random.shuffle(self.all_cards)
