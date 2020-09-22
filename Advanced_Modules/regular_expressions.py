@@ -118,4 +118,27 @@ test_phrase = 'This is a string! But it has punctuation. How can we remove it?'
 
 no_punctuation = re.findall(r'[^!.?]+', test_phrase)
 
-print(no_punctuation)
+print("".join(no_punctuation))
+
+
+'''
+GROUPING FOR INCLUSION
+'''
+
+text = 'Only find the hypen-words in this sentence. But you don\'t know how long-ish this sentence is'
+
+pattern4 = r'[\w]+-[\w]+'
+
+print(re.findall(pattern4, text))
+
+'''
+---------------------------------------------------------------------------------------------------------------
+'''
+
+text_1 = "Hello, would you like some catfish?"
+text_2 = "Hello, would you like to take a catnap?"
+text_3 = "Hello have you seen this caterpillar?"
+
+print(re.search(r'cat(fish|nap|erpillar)', text_1))
+print(re.search(r'cat(fish|nap|erpillar)', text_2))
+print(re.search(r'cat(fish|nap|erpillar)', text_3))
