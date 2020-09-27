@@ -2,7 +2,7 @@
 # Opening and Reading Files
 
 So far we've discussed how to open files manually, one by one.
- Let's explore how we can open files programatically. 
+Let's explore how we can open files programatically. 
 '''
 
 # Create Practice File
@@ -72,7 +72,7 @@ for folder, sub_folders, files in os.walk("Example_Top_Level"):
     
     for f in files:
         print(f"\tFile: {f}")
-    print(\n)
+    print('\n')
 
 
 
