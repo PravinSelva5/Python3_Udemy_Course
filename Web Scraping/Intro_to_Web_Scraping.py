@@ -22,7 +22,11 @@ pip3 install lxml -- allows you to decipher whatever requests returns
 pip install bs4 
 '''
 
-# GRABBING THE TITLE OF A WEB PAGE
+'''
+----------------------------------
+GRABBING A TITLE FROM A WEB PAGE
+----------------------------------
+'''
 
 import requests
 import bs4
@@ -40,3 +44,31 @@ soup.select('title') # will return a list when printed
 title = soup.select('title')[0].getText()
 
 print(title)
+
+'''
+----------------------------------
+  GRABBING A ELEMENTS OF A CLASS
+----------------------------------
+'''
+
+res2 = requests.get("https://en.wikipedia.org/wiki/Grace_Hopper")
+soup2 = bs4.BeautifulSoup(res2.text, "lxml")
+
+first_item = soup2.select('.toctext')[0]
+
+# print(first_item.text)
+
+for item in soup2.select('.toctext'):
+    print(item.text)
+
+
+'''
+-----------------------------------------
+        GRABBING AN IMAGE
+-----------------------------------------
+- ALWAYS check copyright permissions 
+  before downloading from a website
+-----------------------------------------
+'''
+
+
