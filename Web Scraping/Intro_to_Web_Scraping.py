@@ -72,3 +72,22 @@ for item in soup2.select('.toctext'):
 '''
 
 
+res3 = requests.get("https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)")
+soup = bs4.BeautifulSoup(res3.text, 'lxml')
+
+computer = soup.select('.thumbimage')[0]
+
+print(computer['src']) # take the URL given and create a new request
+
+
+image_link = requests.get('https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Deep_Blue.jpg/220px-Deep_Blue.jpg')
+
+# print(image_link.content)
+
+f = open('my_computer_image.jpg', 'wb') # wb = write binary, binary representation of the image
+
+f.write(image_link.content)
+
+f.close()
+
+
